@@ -1722,54 +1722,67 @@ Al ejecutar esta aplicación y acceder a `http://localhost:8080/api/saludo` en u
 
 ```
 CursoDeJava/
+├── pom.xml                 # Archivo de Maven (nuevo)
 ├── src/
-│   ├── CursoJava/          # Ejemplos y teoría principal
-│   ├── Parciales/          # Ejercicios de parciales
-│   ├── Practica/           # Prácticas adicionales
-│   └── ExamenesFinales/    # Ejercicios de exámenes finales
-├── mysql-connector-j-8.1.0.jar    # Driver de MySQL
+│   ├── main/java/         # Código fuente (estándar Maven)
+│   ├── test/java/         # Pruebas JUnit
+│   ├── CursoJava/         # Ejemplos y teoría principal (por migrar)
+│   └── ...
+├── data/                  # Ficheros binarios de ejemplo (productos.ser, reservas.dat)
 └── README.md
 ```
 
 ### 🚀 Configuración del Entorno
 
 #### Prerrequisitos
-- **Java Development Kit (JDK) 8 o superior**
+- **Java Development Kit (JDK) 11 o superior**
+- **Maven 3.6+** (para construir y ejecutar tests)
 - **IDE recomendado:** IntelliJ IDEA, Eclipse o NetBeans
 - **MySQL** (opcional, para ejercicios de bases de datos)
 
 #### Configuración Paso a Paso
 
 1.  **Clonar el repositorio:**
-    ```bash
+    ```powershell
     git clone https://github.com/facundouferer/CursoDeJava.git
-    cd CursoDeJava
+    cd "CursoDeJava"
     ```
 
 2.  **Importar en tu IDE:**
-    *   **IntelliJ IDEA:** `File > Open` y selecciona la carpeta del proyecto.
-    *   **Eclipse:** `File > Import > Existing Projects into Workspace`.
+    *   **IntelliJ IDEA:** `File > Open` y selecciona la carpeta del proyecto (o `Import Project` para Maven).
+    *   **Eclipse:** `File > Import > Maven > Existing Maven Projects`.
     *   **NetBeans:** `File > Open Project`.
 
-3.  **Configurar el JDK:**
-    *   Asegúrate de que tu IDE esté configurado para usar un JDK válido.
-    *   En IntelliJ: `File > Project Structure > Project > Project SDK`.
+3.  **Configurar el JDK en el IDE:**
+    *   Asegúrate de que tu IDE esté configurado para usar JDK 11+.
 
-### 🔧 Compilación y Ejecución
+### 🔧 Compilación y Ejecución (Maven)
 
 #### Desde IDE
-1.  Abre el proyecto en tu IDE.
-2.  Navega al archivo `.java` que deseas ejecutar.
-3.  Haz clic derecho y selecciona "Run".
+1.  Abre el proyecto como proyecto Maven.
+2.  Ejecuta las clases o tests desde el panel de Maven o desde el explorador de clases.
 
-#### Desde Terminal
-```bash
-# Compilar un archivo específico
-javac -cp ".:mysql-connector-j-8.1.0.jar" src/CursoJava/Funciones/Ejercicio01.java
+#### Desde Terminal (Windows PowerShell)
+```powershell
+# Compilar
+mvn -B clean compile
 
-# Ejecutar (desde la raíz del proyecto)
-java -cp ".:mysql-connector-j-8.1.0.jar:src" CursoJava.Funciones.Ejercicio01
+# Ejecutar tests
+mvn -B test
+
+# Empaquetar
+mvn -B package
 ```
+
+#### Notas sobre dependencias
+- El driver de MySQL ya no está incluido como JAR en la raíz; ahora se declara en `pom.xml`.
+- Si necesitas una versión local del driver por alguna razón, colócala en `lib/` y añádela al classpath manualmente (no recomendado).
+
+### 🔢 Datos de ejemplo
+
+- Los ficheros binarios de ejemplo (`productos.ser`, `reservas.dat`) han sido movidos a la carpeta `data/`.
+- Código que carga estos ficheros usa rutas relativas; si ejecutas desde la raíz del proyecto, los archivos estarán disponibles en `data/`.
+
 
 ---
 
@@ -1798,6 +1811,14 @@ Este proyecto está destinado principalmente para fines educativos.
 *   [Documentación oficial de Java](https://docs.oracle.com/javase/)
 *   [Tutorial de Java - Oracle](https://docs.oracle.com/javase/tutorial/)
 *   [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+
+---
+
+## **Mantenimiento**
+
+- **Mantenido por:** Emmanuel Ruiz
+- Si deseas contribuir o preguntar sobre cambios estructurales (migración a Maven, reubicación de datos, limpieza de binarios), por favor abre un issue o un pull request y etiqueta a `@EmmanuelRuiz`.
+
 *   [Eclipse IDE](https://www.eclipse.org/)
 *   [MySQL](https://www.mysql.com/)
 

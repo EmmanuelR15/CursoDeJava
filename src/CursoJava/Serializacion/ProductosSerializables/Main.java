@@ -11,8 +11,8 @@ public class Main {
         productos.add(new Producto("Smartphone", 450.50, 25));
         productos.add(new Producto("Auriculares", 29.99, 100));
 
-        // Nombre del archivo para guardar los productos
-        String filename = "productos.ser";
+        // Nombre del archivo para guardar los productos (ahora en data/)
+        String filename = "data/productos.ser";
 
         // Guardar la lista de productos en el archivo
         Inventario.guardarProductos(productos, filename);

@@ -1,3 +1,33 @@
+# IDE files
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Build directories
+target/
+build/
+
+# Compiled class files
+*.class
+
+# Logs and temp
+*.log
+*.tmp
+*~
+
+# Local libraries
+lib/
+
+# VS Code
+.vscode/
+
+# Data files (moved to /data)
+/data/
 # IntelliJ
 .idea/
 *.iml

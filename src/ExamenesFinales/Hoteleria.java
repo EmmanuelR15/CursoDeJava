@@ -87,10 +87,10 @@ public class Hoteleria {
 
                     break;
                 case 4:
-                    hotel.guardarReservasEnArchivo("reservas.dat");
+                    hotel.guardarReservasEnArchivo("data/reservas.dat");
                     break;
                 case 5:
-                    hotel = Hotel.cargarReservasDesdeArchivo("reservas.dat");
+                    hotel = Hotel.cargarReservasDesdeArchivo("data/reservas.dat");
                     if (hotel != null) {
                         System.out.println("Reservas cargadas desde archivo exitosamente.");
                     } else {
